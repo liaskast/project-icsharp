@@ -48,11 +48,34 @@ namespace iCSharp.Kernel.Shell
             CompleteRequest completeRequest = JsonSerializer.Deserialize<CompleteRequest>(message.Content);
 
             string code = completeRequest.CodeCells[0];
+          // code = code.Substring(1, code.Length - 2);
 			string line = completeRequest.Line;
-            var sourceText = SourceText.From(code);
-            this.logger.Debug(sourceText.ToString());
 
-  
+            this.logger.Debug("Document Before");
+            this.logger.Debug(documentFile.GetTextAsync().Result);
+
+            var sourceText = SourceText.From(code);
+            documentFile = documentFile.WithText(sourceText);
+
+            this.logger.Debug("Document After");
+            this.logger.Debug(documentFile.GetTextAsync().Result);
+
+            this.logger.Debug("Position: " + completeRequest.CursorPosition);
+
+            CustomCompletionProvider customCompletionProvider = new CustomCompletionProvider();
+            var completionTriggers = CompletionTrigger.CreateInsertionTrigger('.');
+
+            var cancellationToken = new CancellationToken();
+
+            CompletionContext completionContext = new CompletionContext(customCompletionProvider, documentFile, completeRequest.CursorPosition, new TextSpan(), completionTriggers, null, cancellationToken);
+            customCompletionProvider.ProvideCompletionsAsync(completionContext);
+            
+        
+            
+            //completions.
+        
+
+           // this.logger.Debug(ShouldTriggerCompletion(documentFile.GetTextAsync().Result, completeRequest.CursorPosition));
 
 
 
@@ -66,22 +89,17 @@ namespace iCSharp.Kernel.Shell
 
             line = line.Substring(0, cur_pos); //get substring of code from start to cursor position
 
-
             string cursorWord = FindWordToAutoComplete(line);*/
-
-            
 
 
             CompleteReply completeReply = new CompleteReply()
             {
                 //CursorEnd = 10,
-                Matches = ShowCompletionAsync(2).Result,
+              //  Matches = ShowCompletionAsync(completeRequest.CursorPosition).Result,
                 Status = "ok",
                 //CursorStart = 5,
                 // MetaData = null
             };
-
-
 
             Message completeReplyMessage = MessageBuilder.CreateMessage(MessageTypeValues.CompleteReply, JsonSerializer.Serialize(completeReply), message.Header);
             this.logger.Info("Sending complete_reply");
@@ -93,9 +111,19 @@ namespace iCSharp.Kernel.Shell
         {
             var completionService = CompletionService.GetService(documentFile);
             var cancellationToken = new CancellationToken();
-
-            var completionList = await completionService.GetCompletionsAsync(documentFile, pos, cancellationToken: cancellationToken);
             List<CompleteReplyMatch> matches_ = new List<CompleteReplyMatch>();
+
+           // if (!(documentFile.GetTextAsync().Result.Length > 0))
+            //{
+             //   return matches_;
+           // }
+             
+            var dot = CompletionTrigger.CreateInsertionTrigger('.');
+            var should_trigger = completionService.ShouldTriggerCompletion(documentFile.GetTextAsync().Result, pos, dot);
+
+            this.logger.Debug("Should trigger: " + should_trigger);
+
+            var completionList = await completionService.GetCompletionsAsync(documentFile, pos+1, cancellationToken: cancellationToken);
 
 
             if (completionList == null)
@@ -116,10 +144,6 @@ namespace iCSharp.Kernel.Shell
             return matches_;
         }
 
-        private static async Task<ImmutableArray<TaggedText>> GetDescriptionAsync(CompletionService completionService, Document document, CompletionItem completionItem)
-        {
-            return (await Task.Run(async () => await completionService.GetDescriptionAsync(document, completionItem))).TaggedParts;
-        }
 
         public string FindWordToAutoComplete(string line)
         {

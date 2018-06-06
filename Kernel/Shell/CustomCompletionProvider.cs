@@ -44,6 +44,64 @@ namespace iCSharp.Kernel.Shell
             return ch == '.' &&
                 (char.IsWhiteSpace(previousCh) || previousCh == '\t' || previousCh == '\r' || previousCh == '\n');
         }
+        ///   CompletionContext completionContext = new CompletionContext(customCompletionProvider, documentFile, completeRequest.CursorPosition, new TextSpan(), completionTriggers, null, cancellationToken);
+
+        /* public async Task<List<CompletionItem>> ProvideCompletionsAsync(Document doc, int position, CancellationToken cancellationToken)
+         {
+             List<CompletionItem> _list = new List<CompletionItem>();
+             var model = await doc.GetSemanticModelAsync(cancellationToken).ConfigureAwait(false);
+             var text = await model.SyntaxTree.GetTextAsync(cancellationToken).ConfigureAwait(false);
+
+             if (!ShouldTriggerCompletion(text, position))
+             {
+                 _list.Add(CompletionItem.Create("Did not trigger completion"));
+                 return _list;
+             }
+
+             // Only provide completion in method body.
+             var enclosingMethod = model.GetEnclosingSymbol(position, cancellationToken) as IMethodSymbol;
+             if (enclosingMethod == null)
+             {
+                 _list.Add(CompletionItem.Create("methodbody"));
+
+                 return _list;
+             }
+
+             // Get all accessible members in this and base types.
+             var membersToSuggest = GetAccessibleMembersInThisAndBaseTypes(
+                 enclosingMethod.ContainingType,
+                 isStatic: enclosingMethod.IsStatic,
+                 position: position - 1,
+                 model: model);
+
+             // Add completion for each member.
+             foreach (var member in membersToSuggest)
+             {
+                 // Ignore constructors
+                 if ((member as IMethodSymbol)?.MethodKind == MethodKind.Constructor)
+                 {
+                     continue;
+                 }
+
+                 // Add receiver and description properties.
+                 var receiver = enclosingMethod.IsStatic ? member.ContainingType.ToDisplayString(SymbolDisplayFormat.MinimallyQualifiedFormat) : "this";
+                 var description = member.ToMinimalDisplayString(model, position - 1);
+
+                 var properties = ImmutableDictionary<string, string>.Empty
+                     .Add(Receiver, receiver)
+                     .Add(Description, description);
+
+                 // Compute completion tags to display.
+                 var tags = GetCompletionTags(member).ToImmutableArray();
+
+                 // Add completion item.
+                 var item = CompletionItem.Create(member.Name, properties: properties, tags: tags);
+                 //context.AddItem(item);
+                 _list.Add(item);
+             }
+             return _list;
+
+         }*/
 
         public async override Task ProvideCompletionsAsync(CompletionContext context)
         {

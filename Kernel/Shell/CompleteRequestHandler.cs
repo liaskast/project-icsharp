@@ -16,6 +16,8 @@ namespace iCSharp.Kernel.Shell
     using System.Threading.Tasks;
     using System.Threading;
     using System.Collections.Immutable;
+    using Microsoft.CodeAnalysis.Options;
+    using System.Reflection;
 
     public class CompleteRequestHandler : IShellMessageHandler
     {
@@ -62,20 +64,56 @@ namespace iCSharp.Kernel.Shell
 
             this.logger.Debug("Position: " + completeRequest.CursorPosition);
 
+            this.logger.Debug("Position: " + completeRequest.CursorPosition);
+
             CustomCompletionProvider customCompletionProvider = new CustomCompletionProvider();
             var completionTriggers = CompletionTrigger.CreateInsertionTrigger('.');
 
             var cancellationToken = new CancellationToken();
+            
 
-            CompletionContext completionContext = new CompletionContext(customCompletionProvider, documentFile, completeRequest.CursorPosition, new TextSpan(), completionTriggers, null, cancellationToken);
-            customCompletionProvider.ProvideCompletionsAsync(completionContext);
-            
+           CompletionContext completionContext = new CompletionContext(customCompletionProvider, documentFile, completeRequest.CursorPosition, new TextSpan(), CompletionTrigger.Invoke, documentFile.Project.Solution.Workspace.Options, cancellationToken);
+           customCompletionProvider.ProvideCompletionsAsync(completionContext).Wait();
+
+            var _list = GetCompletions(completionContext);//customCompletionProvider.ProvideCompletionsAsync(documentFile, completeRequest.CursorPosition, cancellationToken);
+
+            var dot = CompletionTrigger.CreateInsertionTrigger('.');
+            var should_trigger = customCompletionProvider.ShouldTriggerCompletion(documentFile.GetTextAsync().Result, completeRequest.CursorPosition, dot, null);
         
-            
+            this.logger.Debug("Custom Should trigger: " + should_trigger);
+
             //completions.
-        
+            var completionService = CompletionService.GetService(documentFile);
 
-           // this.logger.Debug(ShouldTriggerCompletion(documentFile.GetTextAsync().Result, completeRequest.CursorPosition));
+            should_trigger = completionService.ShouldTriggerCompletion(documentFile.GetTextAsync().Result, completeRequest.CursorPosition, dot);
+
+            this.logger.Debug("Normal Should trigger: " + should_trigger);
+            
+       /*     if (should_trigger)
+            {
+                var normal_list = completionService.GetCompletionsAsync(documentFile, completeRequest.CursorPosition, dot);
+                if (normal_list.Result.Items.Length > 0)
+                {
+                    foreach (var item in normal_list.Result.Items)
+                    {
+                        this.logger.Debug("Normal: " + item.DisplayText);
+                    }
+                }
+            }*/
+
+            List<CompleteReplyMatch> matches_ = new List<CompleteReplyMatch>();
+
+            foreach (var completionItem in _list)
+            {
+                CompleteReplyMatch completeReplyMatch = new CompleteReplyMatch()
+                {
+                    Name = completionItem.DisplayText
+                };
+                matches_.Add(completeReplyMatch);
+            }
+
+
+            // this.logger.Debug(ShouldTriggerCompletion(documentFile.GetTextAsync().Result, completeRequest.CursorPosition));
 
 
 
@@ -95,7 +133,7 @@ namespace iCSharp.Kernel.Shell
             CompleteReply completeReply = new CompleteReply()
             {
                 //CursorEnd = 10,
-              //  Matches = ShowCompletionAsync(completeRequest.CursorPosition).Result,
+                Matches = matches_, //ShowCompletionAsync(completeRequest.CursorPosition).Result,
                 Status = "ok",
                 //CursorStart = 5,
                 // MetaData = null
@@ -143,6 +181,13 @@ namespace iCSharp.Kernel.Shell
 
             return matches_;
         }
+
+        public static IReadOnlyList<CompletionItem> GetCompletions(CompletionContext context)
+        {
+            var property = context.GetType().GetProperty("Items", BindingFlags.Instance | BindingFlags.NonPublic);
+            return (IReadOnlyList<CompletionItem>)property.GetValue(context);
+        }
+
 
 
         public string FindWordToAutoComplete(string line)

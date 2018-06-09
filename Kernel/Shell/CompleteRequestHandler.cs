@@ -50,11 +50,11 @@ namespace iCSharp.Kernel.Shell
 
         private async Task<CompletionList> ShowCompletionAsync(int pos, char? triggerChar)
         {
-            completionCancellation.Cancel();
             completionCancellation = new CancellationTokenSource();
             var cancellationToken = completionCancellation.Token;
 
         //    var completionList = new int pos
+            
 
             if (triggerChar == null || triggerChar == '.') // || IsAllowedLanguageLetter(triggerChar.Value))
             {
@@ -63,6 +63,11 @@ namespace iCSharp.Kernel.Shell
 
                 var document = documentFile;
                 var completionService = CompletionService.GetService(document);
+
+                this.logger.Debug("CompletionService Began");
+                this.logger.Debug("Document: " + document.GetTextAsync().Result);
+                this.logger.Debug("Doucment Length: " + document.GetTextAsync().Result.Length);
+                this.logger.Debug("Position: " + position);
 
                 var completionList = await Task.Run(async () =>
                         await completionService.GetCompletionsAsync(document, position, cancellationToken: cancellationToken), cancellationToken);
@@ -93,9 +98,20 @@ namespace iCSharp.Kernel.Shell
             string code = completeRequest.CodeCells[0];
 			string line = completeRequest.Line;
             var sourceText = SourceText.From(code);
-            this.logger.Debug(sourceText.ToString());
 
-            this.logger.Debug("Position: " + completeRequest.CursorPosition);
+            this.logger.Debug("SourceText: " + sourceText.ToString());
+
+          //  code = /*Regex.Replace(*/code.Substring(1, code.Length - 2);/*, @"\n", " ");*/
+
+            sourceText = SourceText.From(code);
+            this.logger.Debug("SourceText: " + sourceText.ToString());
+
+            documentFile = documentFile.WithText(sourceText);
+
+            //   this.logger.Debug("Position: " + completeRequest.CursorPosition);
+
+            this.logger.Debug("Document: " + documentFile.GetTextAsync().Result);
+            this.logger.Debug("Doucment Length: " + documentFile.GetTextAsync().Result.Length);
 
             var _list = ShowCompletionAsync(completeRequest.CursorPosition, '.').Result;
 
@@ -145,13 +161,28 @@ namespace iCSharp.Kernel.Shell
                     matches_.Add(completeReplyMatch);
                 }*/
 
-            foreach (var completionItem in _list.Items)
+            if (_list != null)
             {
-                CompleteReplyMatch completeReplyMatch = new CompleteReplyMatch()
+                if (_list.Items.Length > 0)
                 {
-                    Name = completionItem.DisplayText
-                };
-                matches_.Add(completeReplyMatch);
+
+                    foreach (var completionItem in _list.Items)
+                    {
+                        CompleteReplyMatch completeReplyMatch = new CompleteReplyMatch()
+                        {
+                            Name = completionItem.DisplayText
+                        };
+                        matches_.Add(completeReplyMatch);
+                    }
+                }
+                else
+                {
+                    this.logger.Debug("List was empty");
+                }
+            }
+            else
+            {
+                this.logger.Debug("List is null");
             }
 
 

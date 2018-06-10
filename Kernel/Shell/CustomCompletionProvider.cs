@@ -109,6 +109,8 @@ namespace iCSharp.Kernel.Shell
             var text = await model.SyntaxTree.GetTextAsync(context.CancellationToken).ConfigureAwait(false);
             if (!ShouldTriggerCompletion(text, context.Position))
             {
+                var item = CompletionItem.Create("Did not trigger");
+                context.AddItem(item);
                 return;
             }
 
@@ -116,6 +118,8 @@ namespace iCSharp.Kernel.Shell
             var enclosingMethod = model.GetEnclosingSymbol(context.Position, context.CancellationToken) as IMethodSymbol;
             if (enclosingMethod == null)
             {
+                var item = CompletionItem.Create("In methodbody");
+                context.AddItem(item);
                 return;
             }
 

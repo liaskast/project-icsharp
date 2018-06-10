@@ -190,6 +190,7 @@
     <Compile Include="ScriptEngine\MemoryBufferConsole.cs" />
     <Compile Include="ScriptEngine\ReplEngineWrapper.cs" />
     <Compile Include="Shell\CompleteRequestHandler.cs" />
+    <Compile Include="Shell\CustomCompletionProvider.cs" />
     <Compile Include="Shell\ExecuteRequestHandler.cs" />
     <Compile Include="Shell\IShellMessageHandler.cs" />
     <Compile Include="Shell\KernelInfoRequestHandler.cs" />

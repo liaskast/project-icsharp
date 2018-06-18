@@ -9,6 +9,8 @@
 > *What is a **Kernel?***
  
    In a nutshell, a **kernel** is the code that makes the notebook **run**!
+   
+   
 
 ### Project Description 
 

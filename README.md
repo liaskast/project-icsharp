@@ -23,6 +23,8 @@ We created a C# language kernel for [Jupyter](http://jupyter.org) which allows u
 
 Along with the C# Kernel we designed and created complementary [Azure notebooks](https://notebooks.azure.com/)  to attract and drive new users to discover C#. The complementary notebook takes the user through a tour of the C# Language highlighting all the concepts and features that come along with it! 
 
+&nbsp;
+
 #### **_click_** [here](https://github.com/omerouz/icsharpBuild/blob/master/C%23%20Tutorial/CSharpTutorial.ipynb) **_to see our C# Notebook_** 
 
 &nbsp;

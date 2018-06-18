@@ -4,7 +4,7 @@
 
 > *What is a **notebook?*** 
 
-   Notebooks are documents produced by [Jupyter](http://jupyter.org), which contain both computer code and text elements that complement the featured code.
+   Notebooks are documents produced by [Jupyter](http://jupyter.org), which contain both computer **code** and **text** elements that complement the featured code.
 
 > *What is a **Kernel?***
  

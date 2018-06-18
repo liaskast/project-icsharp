@@ -10,7 +10,8 @@
  
    In a nutshell, a **kernel** is the code that makes the notebook **run**!
    
-   
+&nbsp;
+&nbsp;
 
 ### Project Description 
 
@@ -24,10 +25,14 @@ Along with the C# Kernel we designed and created complementary [Azure notebooks]
 
 #### **_click_** [here](https://github.com/omerouz/icsharpBuild/blob/master/C%23%20Tutorial/CSharpTutorial.ipynb) **_to see our C# Notebook_** 
 
+&nbsp;
+
 ### Technical Details 
 
 The kernel is based on the Roslyn REPL engine of [scriptcs.](http://scriptcs.net/) and takes advantage of all of Jupyter's frontend features like **Markdown rendering,
 HTML rendering, saving notebooks for later use and even the ability to view C# Notebooks in [Jupyter's NBViewer](http://nbviewer.jupyter.org/)**.
+
+&nbsp;
 
 ### For Use over the Cloud
 
@@ -58,6 +63,8 @@ Open the project on Visual Studio and attempt to build, follow the remaining ins
 #### [Linux](https://github.com/zabirauf/icsharp/wiki/Install-on-Unix-(Debian-7.8))
 
 #### [Windows](https://github.com/zabirauf/icsharp/wiki/Installation)
+
+&nbsp;
 
 ### Supported Features
 

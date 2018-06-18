@@ -14,7 +14,7 @@ In a nutshell, a kernel is the code that makes the notebook **run**!
 
 **“C# is in the [TOP FIVE](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2017) most used programming languages currently in the market.”**
 
-Our C# Kernel caters to users who want to learn how to learn developement in C# through a notebook environment like that of [Azure Notebooks.](https://notebooks.azure.com/) 
+Our C# Kernel caters to users who want to learn how to develop C# code in a notebook environment like that of [Azure Notebooks.](https://notebooks.azure.com/) 
 
 We created a C# language kernel for [Jupyter](http://jupyter.org) which allows users to use Jupyter's Notebook frontend, except where Jupyter executes python code, C# code is executed. 
 

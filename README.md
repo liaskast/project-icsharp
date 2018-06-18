@@ -1,6 +1,6 @@
 # C# Azure Notebook Kernel
 
-#### Quick Nomenclature for first time users
+#### Quick Nomenclature for *first time users*
 
 > *What is a **notebook?*** 
 

@@ -18,7 +18,8 @@ Our C# Kernel caters to users who want to learn how to develop C# code in a note
 
 We created a C# language kernel for [Jupyter](http://jupyter.org) which allows users to use Jupyter's Notebook frontend, except where Jupyter executes python code, C# code is executed. 
 
-Along with the C# Kernel we designed and created complementary [Azure notebooks](https://notebooks.azure.com/)  to attract and drive new users to discover C#. The complementary notebook takes the user through a tour of the C# Language highlighting all the concepts and features that come along with it!
+Along with the C# Kernel we designed and created complementary [Azure notebooks](https://notebooks.azure.com/)  to attract and drive new users to discover C#. The complementary notebook takes the user through a tour of the C# Language highlighting all the concepts and features that come along with it! To see the >complementary C# Notebook, click [here](https://github.com/omerouz/icsharpBuild/blob/master/C%23%20Tutorial/CSharpTutorial.ipynb)
+
 
 ### Technical Details 
 
@@ -65,7 +66,7 @@ This is a **context-aware code completion** feature that **speeds up** the proce
 We are eager to receive [feedback](mailto:zabirauf@gmail.com) from anyone who has attempted to use our Kernel. We would love to hear
 your thoughts and are constantly striving to improve our product!
 
-## [Complementary C# Notebook](https://github.com/omerouz/icsharpBuild/blob/master/C%23%20Tutorial/CSharpTutorial.ipynb)
+
 
 
 

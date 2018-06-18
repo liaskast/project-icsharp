@@ -1,5 +1,15 @@
 # C# Azure Notebook Kernel
 
+## Quick Nomenclature for first time users
+
+- What is a **notebook?** 
+
+Notebooks are documents produced by [Jupyter](http://jupyter.org), which contain both computer code and text elements that complement the featured code.
+
+- What is a **Kernel?** 
+
+In a nutshell, a kernel is the code that makes the notebook **run**!
+
 ### Project Description 
 
 **“C# is in the [TOP FIVE](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2017) most used programming languages currently in the market.”**
@@ -17,11 +27,11 @@ HTML rendering, saving notebooks for later use and even the ability to view C# N
 
 ### For Use over the Cloud
 
-If you wish to **"develop C# code in your browse"r** please use our 4-step guide and [complementary video](https://drive.google.com/open?id=1bufPJQdYsznr3HR637oJy615Ad0btq8C) walkthrough to use the C# Notebook on [Azure Cloud](https://azure.microsoft.com/en-gb/).
+If you wish to **"develop C# code in your browser"** please use our [4-step guide](https://github.com/MohamedEihab/icsharp/blob/406c6e1b5c4e4bb5b8f572dc84478cedd8c0fd83/Documentation/User_Guidance_C%23Kernel_Setup/C-Azure-Deployment-Steps.pdf) and [instructional video](https://drive.google.com/open?id=1bufPJQdYsznr3HR637oJy615Ad0btq8C) to use the C# Notebook on [Azure Cloud](https://azure.microsoft.com/en-gb/).
 
 ### For Use locally
 
-If you wish to use the the Kernel locally on your machine, or are a software developer that would like to contribute towards improving this **open-source** project please follow the instructions below:
+If you wish to use the the Kernel locally on your machine, or are a software developer that would like to contribute towards improving this **open-source** project by further developing the code on which the kernel is based, please follow the instructions below:
 
 Clone the respository and make sure that the submodule engine has been cloned by using this command:
 

@@ -2,11 +2,11 @@
 
 #### Quick Nomenclature for first time users
 
-*What is a **notebook?*** 
+> *What is a **notebook?*** 
 
    Notebooks are documents produced by [Jupyter](http://jupyter.org), which contain both computer code and text elements that complement the featured code.
 
-*What is a **Kernel?***
+> *What is a **Kernel?***
  
    In a nutshell, a kernel is the code that makes the notebook **run**!
 

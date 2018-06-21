@@ -1,27 +1,48 @@
 # C# Azure Notebook Kernel
 
+#### Quick Nomenclature for *first time users*
+
+> *What is a **notebook?*** 
+
+   **Notebooks** are documents produced by [Jupyter](http://jupyter.org), which contain both computer **code** and **text** elements that complement the featured code.
+
+> *What is a **Kernel?***
+ 
+   In a nutshell, a **kernel** is the code that makes the notebook **run**!
+   
+&nbsp;
+&nbsp;
+
 ### Project Description 
 
 **“C# is in the [TOP FIVE](https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2017) most used programming languages currently in the market.”**
 
-Our C# Kernel caters to users who want to learn how to learn developement in C# through a notebook environment like that of [Azure Notebooks.](https://notebooks.azure.com/) 
+Our C# Kernel caters to users who want to learn how to develop C# code in a notebook environment like that of [Azure Notebooks.](https://notebooks.azure.com/) 
 
 We created a C# language kernel for [Jupyter](http://jupyter.org) which allows users to use Jupyter's Notebook frontend, except where Jupyter executes python code, C# code is executed. 
 
-Along with the C# Kernel we designed and created complementary [Azure notebooks](https://notebooks.azure.com/)  to attract and drive new users to discover C#. The complementary notebook takes the user through a tour of the C# Language highlighting all the concepts and features that come along with it!
+Along with the C# Kernel we designed and created complementary [Azure notebooks](https://notebooks.azure.com/)  to attract and drive new users to discover C#. The complementary notebook takes the user through a tour of the C# Language highlighting all the concepts and features that come along with it! 
+
+&nbsp;
+
+#### **_click_** [here](https://github.com/omerouz/icsharpBuild/blob/master/C%23%20Tutorial/CSharpTutorial.ipynb) **_to see our C# Notebook_** 
+
+&nbsp;
 
 ### Technical Details 
 
 The kernel is based on the Roslyn REPL engine of [scriptcs.](http://scriptcs.net/) and takes advantage of all of Jupyter's frontend features like **Markdown rendering,
 HTML rendering, saving notebooks for later use and even the ability to view C# Notebooks in [Jupyter's NBViewer](http://nbviewer.jupyter.org/)**.
 
+&nbsp;
+
 ### For Use over the Cloud
 
-If you wish to **"develop C# code in your browse"r** please use our 4-step guide and [complementary video](https://drive.google.com/open?id=1bufPJQdYsznr3HR637oJy615Ad0btq8C) walkthrough to use the C# Notebook on [Azure Cloud](https://azure.microsoft.com/en-gb/).
+If you wish to **"develop C# code in your browser"** please use our [4-step guide](https://github.com/MohamedEihab/icsharp/blob/406c6e1b5c4e4bb5b8f572dc84478cedd8c0fd83/Documentation/User_Guidance_C%23Kernel_Setup/C-Azure-Deployment-Steps.pdf) and [instructional video](https://drive.google.com/open?id=1bufPJQdYsznr3HR637oJy615Ad0btq8C) to use the C# Notebook on [Azure Cloud](https://azure.microsoft.com/en-gb/).
 
 ### For Use locally
 
-If you wish to use the the Kernel locally on your machine, or are a software developer that would like to contribute towards improving this **open-source** project please follow the instructions below:
+If you wish to use the the Kernel locally on your machine, or are a software developer that would like to contribute towards improving this **open-source** project by further developing the code on which the kernel is based, please follow the instructions below:
 
 Clone the respository and make sure that the submodule engine has been cloned by using this command:
 
@@ -45,6 +66,8 @@ Open the project on Visual Studio and attempt to build, follow the remaining ins
 
 #### [Windows](https://github.com/zabirauf/icsharp/wiki/Installation)
 
+&nbsp;
+
 ### Supported Features
 
 #### Intellisense
@@ -55,7 +78,7 @@ This is a **context-aware code completion** feature that **speeds up** the proce
 We are eager to receive [feedback](mailto:zabirauf@gmail.com) from anyone who has attempted to use our Kernel. We would love to hear
 your thoughts and are constantly striving to improve our product!
 
-## [Complementary C# Notebook](https://github.com/omerouz/icsharpBuild/blob/master/C%23%20Tutorial/CSharpTutorial.ipynb)
+
 
 
 

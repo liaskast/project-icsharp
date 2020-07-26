@@ -1,10 +1,12 @@
+You can find a thorough description explaining the context of this project [here](http://athanasiosliaskas.com/home/#/portfolio/http://athanasiosliaskas.com/portfolio/microsoft-c-kernel/).
+
 [![Build Status](https://travis-ci.org/zabirauf/icsharp.svg)](https://travis-ci.org/zabirauf/icsharp)
 
 # Interactive C# Notebook
-ICSharp is an C# language kernel for [Jupyter.](http://jupyter.org) It allows users
+ICSharp is a C# language kernel for [Jupyter.](http://jupyter.org) It allows users
 to use Jupyter's Notebook frontend, except where Jupyter executes python code, ICSharp
 can execute C# code. It is based on Roslyn REPL engine of [scriptcs.](http://scriptcs.net/),
-so all the goodies of scriptcs comes along with it.
+so all the advantages of such scriptcs come along with it.
 
 This is on top of all of Jupyter's other frontend features like Markdown rendering,
 HTML rendering, saving notebooks for later use and even the ability to view ICSharp
@@ -12,16 +14,16 @@ Notebooks in [Jupyter's NBViewer](http://nbviewer.jupyter.org/).
 
 ### Disclaimer
 The development of this language kernel for C# is at it's very early stages.
-This is Alpha. Take with a large pinch of salt :)
+This is the Alpha stage.
 
 ### Installation
 
 ### BUILD ISSUE FIX AND INSTALLATION (Windows confirmed working for now)
-Clone the respository and make sure that the submodule engine has been cloned by using this command:
+Clone the respository and make sure that the submodule engine has been cloned by using the command:
 
 `git clone --recurse-submodules -j8 git://github.com/MohamedEihab/icsharp`
   
-Update and restore the nuget dependencies using the following commands
+Update and restore the nuget dependencies using the following commands:
 
 ```
 nuget\Nuget.exe update -self
@@ -40,7 +42,7 @@ Open the project on Visual Studio and attempt to build, follow the remaining ins
 #### [Windows](https://github.com/zabirauf/icsharp/wiki/Installation)
 
 ### Feedback
-I am eager to receive [feedback](mailto:zabirauf@gmail.com) from anyone who has attempted to use ICSharp. I would love to hear
+[Feedback](mailto:zabirauf@gmail.com) is welcome from anyone who has attempted to use ICSharp. We would love to hear
 some thoughts on how to improve ICSharp.
 
 ### Known Issues
@@ -49,7 +51,7 @@ some thoughts on how to improve ICSharp.
 
 ## [Demo](http://nbviewer.jupyter.org/urls/gist.githubusercontent.com/zabirauf/a0d4aa22b383afaa1e23/raw/65e539dc98b2cf3e38cc26faf3575e50f4ac9108/iCSharp%20Sample.ipynb)
 
-## TODO
+## Ideas for Future Developement
 
 ### Code to write
 

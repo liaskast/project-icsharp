@@ -12,6 +12,9 @@ This is on top of all of Jupyter's other frontend features like Markdown renderi
 HTML rendering, saving notebooks for later use and even the ability to view ICSharp
 Notebooks in [Jupyter's NBViewer](http://nbviewer.jupyter.org/).
 
+# Project Context Description
+Our C# Kernal caters to users who want to learn how to program in C# through a notebook environment like that of Azure Notebooks. Along with the C# Kernal we designed and created a complementary Azure Notebook to attract and drive users to discover C#. The complementary notebook takes the user through a tour of the C# Language highlighting all the concepts and features that come along with it! The completion of this project marked the first time I was able to work on a large scale commercial software project.
+
 ### Disclaimer
 The development of this language kernel for C# is at it's very early stages.
 This is the Alpha stage.
